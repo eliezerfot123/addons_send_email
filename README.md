@@ -1,2 +1,3 @@
-# addons_send_email
-Addons of firefox for send emails and report incidents
+# Plugin para firefox 
+
+Plugin para firefox para reportar vía emails incidentes
