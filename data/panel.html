@@ -6,11 +6,7 @@
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src="js/app.js"></script>
 
-    </head>
-    <body data-ng-app="ReportIncidentes">
         <style>
             .demo-card-wide.mdl-card {
             width: 512px;
@@ -24,6 +20,8 @@
             color: #fff;
             }
         </style>
+    </head>
+    <body ng-app="ReportIncidentes">
         <div class="mdl-card mdl-shadow--2dp demo-card-wide">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Reporte su Incidente Aquí</h2>
@@ -31,32 +29,35 @@
             <div class="mdl-card__supporting-text">
                 ¿Há sufrido usted un ataque a su institución?, envíe su reporte  y en breve le atenderemos
             </div>
-            <div class="mdl-card__actions mdl-card--border" data-ng-controller='MainCtrl'>
-                <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <input class="mdl-textfield__input"  required type="text" name="nombre" data-ng-model='formData.nombre' required />
-                        <label class="mdl-textfield__label">Nombre de quien reporta...</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <input class="mdl-textfield__input"  required type="text" name="telefono" data-ng-model='formData.telefono' required/>
-                        <label class="mdl-textfield__label">Teléfono Celular...</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <input class="mdl-textfield__input" type="email" required="required"  name="correo" data-ng-model='formData.correo' required />
-                        <label class="mdl-textfield__label">Correo electrónico...</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <textarea class="mdl-textfield__input" type="text" rows= "3"  name="comentario" data-ng-model='formData.comentario' required></textarea>
-                        <label class="mdl-textfield__label">Comentenos sobre su incidente...</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                        <br>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-                            Enviar su reporte
-                        </button>
-                    </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <div ng-controller="ReportController">
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                            <input class="mdl-textfield__input"  required type="text" name="nombre" data-ng-model='user.nombre' required />
+                            <label class="mdl-textfield__label">Nombre de quien reporta...</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                            <input class="mdl-textfield__input"  required type="text" name="telefono" data-ng-model='user.telefono' required/>
+                            <label class="mdl-textfield__label">Teléfono Celular...</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                            <input class="mdl-textfield__input" type="email" required="required"  name="correo" data-ng-model='user.correo' required />
+                            <label class="mdl-textfield__label">Correo electrónico...</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                            <textarea class="mdl-textfield__input" type="text" rows= "3"  name="comentario" data-ng-model='user.comentario' required></textarea>
+                            <label class="mdl-textfield__label">Comentenos sobre su incidente...</label>
+                        </div>
 
-                </form>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                            <br>
+                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" ng-click="update(user)" value="Enviar Reporte" />
+                        </div>
+
+                    </form>
+                    <pre>form = {{user | json}}</pre>
+                    <pre>master = {{master | json}}</pre>
+                </div>
                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 ¡Visite nuestra página web!
                 </a>
@@ -67,5 +68,8 @@
                 </button>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src="js/app.js"></script>
     </body>
 </html>

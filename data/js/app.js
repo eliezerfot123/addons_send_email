@@ -1,6 +1,15 @@
-var app = angular.module('ReportIncidentes', [])
+angular.module('ReportIncidentes', [])
+    
+  .controller('ReportController', ['$scope', function($scope) {
+      $scope.master = {};
 
-app.controller('MainCtrl', function ($scope) {
-    $scope.formData = {};
+      $scope.update = function(user) {
+        $scope.master = angular.copy(user);
+      };
 
-});
+      $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+      };
+
+      $scope.reset();
+}]);
