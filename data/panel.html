@@ -6,39 +6,66 @@
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="js/app.js"></script>
+
     </head>
-    <body>
+    <body data-ng-app="ReportIncidentes">
         <style>
-          .demo-card-wide.mdl-card {
+            .demo-card-wide.mdl-card {
             width: 512px;
-          }
-          .demo-card-wide > .mdl-card__title {
+            }
+            .demo-card-wide > .mdl-card__title {
             color: #fff;
             height: 176px;
             background: url('images/welcome_card.jpg') center / cover;
-          }
-          .demo-card-wide > .mdl-card__menu {
+            }
+            .demo-card-wide > .mdl-card__menu {
             color: #fff;
-          }
+            }
         </style>
-
         <div class="mdl-card mdl-shadow--2dp demo-card-wide">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Reporte su Incidente Aquí</h2>
-          </div>
-          <div class="mdl-card__supporting-text">
-            ¿Há sufrido usted un ataque a su institución?, envíe su reporte  y en breve le atenderemos
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-              Get Started
-            </a>
-          </div>
-          <div class="mdl-card__menu">
-            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-              <i class="material-icons">share</i>
-            </button>
-          </div>
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Reporte su Incidente Aquí</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                ¿Há sufrido usted un ataque a su institución?, envíe su reporte  y en breve le atenderemos
+            </div>
+            <div class="mdl-card__actions mdl-card--border" data-ng-controller='MainCtrl'>
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                        <input class="mdl-textfield__input"  required type="text" name="nombre" data-ng-model='formData.nombre' required />
+                        <label class="mdl-textfield__label">Nombre de quien reporta...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                        <input class="mdl-textfield__input"  required type="text" name="telefono" data-ng-model='formData.telefono' required/>
+                        <label class="mdl-textfield__label">Teléfono Celular...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                        <input class="mdl-textfield__input" type="email" required="required"  name="correo" data-ng-model='formData.correo' required />
+                        <label class="mdl-textfield__label">Correo electrónico...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                        <textarea class="mdl-textfield__input" type="text" rows= "3"  name="comentario" data-ng-model='formData.comentario' required></textarea>
+                        <label class="mdl-textfield__label">Comentenos sobre su incidente...</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                        <br>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                            Enviar su reporte
+                        </button>
+                    </div>
+
+                </form>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                ¡Visite nuestra página web!
+                </a>
+            </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+                </button>
+            </div>
         </div>
     </body>
 </html>

@@ -17,7 +17,7 @@ var panel = panels.Panel({
   contentURL: self.data.url("panel.html"),
   onHide: handleHide,
   width:512,
-  height: 300
+  height: 700
 });
 
 function handleChange(state) {
