@@ -1,9 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
-        <meta charset="utf-8">
-        <title>Addons for Report Incidents </title>
+        <title>Reporte de Incidentes</title>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
-        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
 
@@ -20,9 +20,11 @@
             color: #fff;
             }
         </style>
+
+
     </head>
-    <body ng-app="ReportIncidentes">
-        <div class="mdl-card mdl-shadow--2dp demo-card-wide">
+    <body ng-app="ReportIncidentes" >
+       <div class="mdl-card mdl-shadow--2dp demo-card-wide">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">Reporte su Incidente Aquí</h2>
             </div>
@@ -30,37 +32,41 @@
                 ¿Há sufrido usted un ataque a su institución?, envíe su reporte  y en breve le atenderemos
             </div>
             <div class="mdl-card__actions mdl-card--border">
-                <div ng-controller="ReportController">
-                    <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                            <input class="mdl-textfield__input"  required type="text" name="nombre" data-ng-model='user.nombre' required />
+                <div ng-controller="ContactController">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    {{ resultMessage }}                
+                </a>
+                    <form ng-submit="submit(contactform)" name="contactform" method="post" action="" role="form">
+                        <div class="mdl-textfield mdl-js-textfield  " ng-class="{ 'has-error': contactform.inputName.$invalid && submitted }">
+                            <input class="mdl-textfield__input"  ng-model="formData.inputName" type="text" id="inputName" name="inputName" required />
                             <label class="mdl-textfield__label">Nombre de quien reporta...</label>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                            <input class="mdl-textfield__input"  required type="text" name="telefono" data-ng-model='user.telefono' required/>
-                            <label class="mdl-textfield__label">Teléfono Celular...</label>
+
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo" ng-class="{ 'has-error': contactform.inputEmail.$invalid && submitted }">
+                            <input class="mdl-textfield__input"  ng-model="formData.inputEmail" type="email" id="inputEmail" name="inputEmail" required />
+                            <label class="mdl-textfield__label">Correo Electrónico</label>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                            <input class="mdl-textfield__input" type="email" required="required"  name="correo" data-ng-model='user.correo' required />
-                            <label class="mdl-textfield__label">Correo electrónico...</label>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo" ng-class="{ 'has-error': contactform.inputPhone.$invalid && submitted }">
+                            <input class="mdl-textfield__input"  ng-model="formData.inputPhone" type="text" id="inputPhone" name="inputPhone" required />
+                            <label class="mdl-textfield__label">Número de teléfono de contacto</label>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                            <textarea class="mdl-textfield__input" type="text" rows= "3"  name="comentario" data-ng-model='user.comentario' required></textarea>
+                        <div class="mdl-textfield mdl-js-textfield textfield-demo" ng-class="{ 'has-error': contactform.inputMessage.$invalid && submitted }">
+                            <textarea class="mdl-textfield__input" type="text"  ng-model="formData.inputMessage" rows="4" id="inputMessage" name="inputMessage"  required></textarea>
                             <label class="mdl-textfield__label">Comentenos sobre su incidente...</label>
                         </div>
-
                         <div class="mdl-textfield mdl-js-textfield textfield-demo">
-                            <br>
-                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" ng-click="update(user)" value="Enviar Reporte" />
+                            <br>                      
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                Enviar su Reporte
+                            </button>
                         </div>
-
                     </form>
-                    <pre>form = {{user | json}}</pre>
-                    <pre>master = {{master | json}}</pre>
+                    
                 </div>
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                ¡Visite nuestra página web!
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="javascript:location.reload()">
+                    Presione aquí para enviar otro reporte               
                 </a>
+                
             </div>
             <div class="mdl-card__menu">
                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -68,8 +74,11 @@
                 </button>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
+
     </body>
 </html>

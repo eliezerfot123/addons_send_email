@@ -1,15 +1,1 @@
-angular.module('ReportIncidentes', [])
-    
-  .controller('ReportController', ['$scope', function($scope) {
-      $scope.master = {};
-
-      $scope.update = function(user) {
-        $scope.master = angular.copy(user);
-      };
-
-      $scope.reset = function() {
-        $scope.user = angular.copy($scope.master);
-      };
-
-      $scope.reset();
-}]);
+var app = angular.module('ReportIncidentes', []);
