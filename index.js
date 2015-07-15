@@ -4,7 +4,7 @@ var self = require("sdk/self");
 
 var button = ToggleButton({
   id: "my-button",
-  label: "my button",
+  label: "Reporte de Incidentes Telemáticos",
   icon: {
     "16": "./images/icon_16.png",
     "32": "./images/icon_32.png",
